@@ -15,5 +15,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SecondaryButtonComponent {
   @Input()
-  text: string = '';
+  text: string = 'test';
 }
