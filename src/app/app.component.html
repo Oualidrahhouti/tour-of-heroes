@@ -1,6 +1,8 @@
 <h1 class="text-3xl font-bold mb-5">{{ title }}</h1>
 <nav class="flex gap-3">
-  <a><secondary-button text="Dashboard"></secondary-button></a>
-  <a><secondary-button text="Heroes"></secondary-button></a>
+  <a routerLink="dashboard"
+    ><secondary-button text="Dashboard"></secondary-button
+  ></a>
+  <a routerLink="heroes"><secondary-button text="Heroes"></secondary-button></a>
 </nav>
-<app-dashboard></app-dashboard>
+<router-outlet></router-outlet>
