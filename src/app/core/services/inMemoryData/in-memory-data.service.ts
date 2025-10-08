@@ -21,6 +21,6 @@ export class InMemoryDataService implements InMemoryDbService {
   constructor() {}
 
   createDb(): {} | Observable<{}> | Promise<{}> {
-    return [];
+    return this.heroes;
   }
 }
