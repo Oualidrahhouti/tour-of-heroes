@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   imports: [],
   template: `
     <button
-      class="p-2 hover:bg-gray-700 bg-gray-300 w-60 hover:text-white text-lg cursor-pointer rounded-md"
+      class="mt-5 p-2 hover:bg-gray-700 bg-gray-300 w-60 hover:text-white text-lg cursor-pointer rounded-md"
     >
       {{ text }}
     </button>

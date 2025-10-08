@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterModule } from '@angular/router';
 import { SecondaryButtonComponent } from './shared/secondary-button/secondary-button.component';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
+import { MessagesComponent } from './features/messages/messages.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { DashboardComponent } from './features/dashboard/dashboard.component';
     SecondaryButtonComponent,
     DashboardComponent,
     RouterLink,
+    MessagesComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
