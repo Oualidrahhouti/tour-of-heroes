@@ -25,7 +25,9 @@ export class InputComponent {
   @Input()
   label: string = '';
 
-  get inputId(): string {
-    return this.id || `app-input-${InputComponent.nextId++}`;
+  inputId: string;
+
+  constructor() {
+    this.inputId = this.id || `app-input-${InputComponent.nextId++}`;
   }
 }
