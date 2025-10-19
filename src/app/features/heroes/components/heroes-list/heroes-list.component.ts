@@ -9,7 +9,11 @@ import { RouterLink } from '@angular/router';
   imports: [HeroItemComponent, CommonModule, RouterLink],
   template: ` <div class="mt-5 flex flex-col gap-5 ">
     <a [routerLink]="['/heroe', hero.id]" *ngFor="let hero of heroes">
-      <hero-item [id]="hero.id" [hero]="hero.name"></hero-item>
+      <hero-item
+        (heroeRemoved)="removeHeroe($event)"
+        [id]="hero.id"
+        [hero]="hero.name"
+      ></hero-item>
     </a>
   </div>`,
   styles: ``,
@@ -17,4 +21,8 @@ import { RouterLink } from '@angular/router';
 export class HeroesListComponent {
   @Input()
   heroes: any[] = [];
+
+  removeHeroe(id: Number) {
+    this.heroes = this.heroes.filter((heroe) => heroe.id !== id);
+  }
 }

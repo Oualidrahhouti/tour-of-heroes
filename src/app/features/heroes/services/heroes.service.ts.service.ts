@@ -50,10 +50,18 @@ export class HeroesServiceTsService {
 
   editHeroe(heroe: any): Observable<any> {
     return this.httpClient.put(`${this.apiUrl}/${heroe.id}`, heroe).pipe(
-      tap((response) => {
+      tap(() => {
         this.messagesSerivice.addMessage(
-          `HeroService: updated hero id=${response}`
+          `HeroService: updated hero id=${heroe.id}`
         );
+      })
+    );
+  }
+
+  removeHeroe(id: Number): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
+      tap(() => {
+        this.messagesSerivice.addMessage(`HeroService: deleted hero id=${id}`);
       })
     );
   }
