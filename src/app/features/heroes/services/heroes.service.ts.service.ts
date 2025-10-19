@@ -22,4 +22,14 @@ export class HeroesServiceTsService {
         )
       );
   }
+
+  getHeroe(id: number): Observable<any> {
+    return this.httpClient
+      .get<any>(`${this.apiUrl}/${id}`)
+      .pipe(
+        tap(() =>
+          this.messagesSerivice.addMessage(`HeroService: fetched hero id=${id}`)
+        )
+      );
+  }
 }

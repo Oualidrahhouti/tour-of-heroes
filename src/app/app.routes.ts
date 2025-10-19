@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './features/dashboard/dashboard.component';
 import { HeroesComponent } from './features/heroes/components/heroes/heroes.component';
+import { HeroeComponent } from './features/heroes/heroe/heroe.component';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,10 @@ export const routes: Routes = [
   {
     path: 'heroes',
     component: HeroesComponent,
+  },
+  {
+    path: 'heroe/:id',
+    component: HeroeComponent,
   },
   {
     path: '**',

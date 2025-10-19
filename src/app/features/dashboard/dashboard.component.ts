@@ -3,17 +3,20 @@ import { PrimaryButtonComponent } from '../../shared/primary-button/primary-butt
 import { InputComponent } from '../../shared/input/input.component';
 import { HeroesServiceTsService } from '../heroes/services/heroes.service.ts.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [PrimaryButtonComponent, InputComponent, CommonModule],
+  imports: [PrimaryButtonComponent, InputComponent, CommonModule, RouterLink],
   template: `
     <div class="flex flex-col w-max mt-8">
       <h2 class="self-center text-2xl mb-8">Top Heroes</h2>
       <ul class="flex gap-2">
         <li *ngFor="let heroe of heroes">
-          <primary-button [text]="heroe.name"></primary-button>
+          <a [routerLink]="['/heroe', heroe.id]"
+            ><primary-button [text]="heroe.name"></primary-button
+          ></a>
         </li>
       </ul>
       <app-input label="Hero Search"></app-input>

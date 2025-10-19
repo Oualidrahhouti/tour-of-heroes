@@ -10,7 +10,6 @@ export class MessagesService {
 
   public addMessage(message: string) {
     this.messages.push(message);
-    console.log(this.messages);
   }
 
   public clearMessages() {
