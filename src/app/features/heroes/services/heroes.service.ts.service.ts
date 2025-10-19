@@ -47,4 +47,14 @@ export class HeroesServiceTsService {
       })
     );
   }
+
+  editHeroe(heroe: any): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${heroe.id}`, heroe).pipe(
+      tap((response) => {
+        this.messagesSerivice.addMessage(
+          `HeroService: updated hero id=${response}`
+        );
+      })
+    );
+  }
 }

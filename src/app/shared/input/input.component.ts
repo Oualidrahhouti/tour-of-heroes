@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
       size="42"
       class="mt-2 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
       [(ngModel)]="value"
+      (ngModelChange)="onValueChanged($event)"
     />
   </div>`,
   styles: ``,
@@ -29,6 +30,13 @@ export class InputComponent {
 
   @Input()
   value: string = '';
+
+  @Output()
+  valueChanged: EventEmitter<string> = new EventEmitter();
+
+  onValueChanged(newValue: string) {
+    this.valueChanged.emit(newValue);
+  }
 
   inputId: string;
 
