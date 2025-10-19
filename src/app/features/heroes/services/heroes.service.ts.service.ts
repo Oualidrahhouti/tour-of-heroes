@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { MessagesService } from '../../../core/services/messages/messages.service';
@@ -8,6 +8,10 @@ import { MessagesService } from '../../../core/services/messages/messages.servic
 })
 export class HeroesServiceTsService {
   private apiUrl = 'api/heroes';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  };
+
   constructor(
     private httpClient: HttpClient,
     private messagesSerivice: MessagesService
@@ -31,5 +35,16 @@ export class HeroesServiceTsService {
           this.messagesSerivice.addMessage(`HeroService: fetched hero id=${id}`)
         )
       );
+  }
+
+  addHeroe(name: string): Observable<any> {
+    return this.httpClient.post<any>(this.apiUrl, { name }).pipe(
+      tap((response) => {
+        this.messagesSerivice.addMessage(
+          `HeroService: added hero w/ id=${response.id}`
+        );
+        console.log(response);
+      })
+    );
   }
 }
