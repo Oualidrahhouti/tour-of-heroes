@@ -12,6 +12,7 @@ import { Component, Input } from '@angular/core';
       type="text"
       size="42"
       class="mt-2 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+      [value]="value"
     />
   </div>`,
   styles: ``,
@@ -24,6 +25,9 @@ export class InputComponent {
 
   @Input()
   label: string = '';
+
+  @Input()
+  value: string = '';
 
   inputId: string;
 
