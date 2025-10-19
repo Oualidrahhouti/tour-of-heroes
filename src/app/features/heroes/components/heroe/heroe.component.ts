@@ -10,16 +10,18 @@ import { SecondaryButtonComponent } from '../../../../shared/secondary-button/se
   standalone: true,
   imports: [CommonModule, InputComponent, SecondaryButtonComponent, RouterLink],
   template: `<div class="mt-5">
-    <h2 class="text-xl">{{ heroe.name | uppercase }} Details</h2>
-    <p>id: {{ heroeId }}</p>
-    <app-input label="Hero name" [value]="heroe.name"></app-input>
-    <div class="flex gap-4">
-      <secondary-button
-        routerLink="dashboard"
-        text="go back"
-      ></secondary-button>
-      <secondary-button text="save"></secondary-button>
-    </div>
+    <ng-container *ngIf="heroe"
+      ><h2 class="text-xl">{{ heroe.name | uppercase }} Details</h2>
+      <p>id: {{ heroeId }}</p>
+      <app-input label="Hero name" [value]="heroe.name"></app-input>
+      <div class="flex gap-4">
+        <secondary-button
+          routerLink="dashboard"
+          text="go back"
+        ></secondary-button>
+        <secondary-button text="save"></secondary-button></div
+    ></ng-container>
+    <ng-container *ngIf="!heroe">Loading...</ng-container>
   </div> `,
   styles: ``,
 })
