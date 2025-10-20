@@ -3,6 +3,7 @@ import { InputComponent } from '../../../../shared/input/input.component';
 import { SecondaryButtonComponent } from '../../../../shared/secondary-button/secondary-button.component';
 import { HeroesListComponent } from '../heroes-list/heroes-list.component';
 import { HeroesServiceTsService } from '../../services/heroes.service.ts.service';
+import { heroes } from '../../models/heroes.types';
 
 @Component({
   selector: 'app-heroes',
@@ -17,7 +18,7 @@ import { HeroesServiceTsService } from '../../services/heroes.service.ts.service
   styles: ``,
 })
 export class HeroesComponent implements OnInit {
-  heroes: any[] = [];
+  heroes: heroes = [];
 
   @ViewChild('customInput')
   customInput!: InputComponent;

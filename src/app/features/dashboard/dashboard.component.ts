@@ -4,6 +4,7 @@ import { InputComponent } from '../../shared/input/input.component';
 import { HeroesServiceTsService } from '../heroes/services/heroes.service.ts.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { heroes } from '../heroes/models/heroes.types';
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +26,7 @@ import { RouterLink } from '@angular/router';
   styles: ``,
 })
 export class DashboardComponent implements OnInit {
-  heroes: any[] = [];
+  heroes: heroes = [];
 
   constructor(private heroesSerive: HeroesServiceTsService) {}
 

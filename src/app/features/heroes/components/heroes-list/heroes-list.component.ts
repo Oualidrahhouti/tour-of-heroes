@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { HeroItemComponent } from '../hero-item/hero-item.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { heroes } from '../../models/heroes.types';
 
 @Component({
   selector: 'app-heroes-list',
@@ -20,7 +21,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HeroesListComponent {
   @Input()
-  heroes: any[] = [];
+  heroes: heroes = [];
 
   removeHeroe(id: Number) {
     this.heroes = this.heroes.filter((heroe) => heroe.id !== id);

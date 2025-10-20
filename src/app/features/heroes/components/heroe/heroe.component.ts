@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../../shared/input/input.component';
 import { SecondaryButtonComponent } from '../../../../shared/secondary-button/secondary-button.component';
 import { FormsModule } from '@angular/forms';
+import { heroe } from '../../models/heroes.model';
 
 @Component({
   selector: 'app-heroe',
@@ -40,7 +41,7 @@ import { FormsModule } from '@angular/forms';
   styles: ``,
 })
 export class HeroeComponent implements OnInit {
-  heroe: any;
+  heroe!: heroe;
   heroeId: number = 1;
 
   constructor(

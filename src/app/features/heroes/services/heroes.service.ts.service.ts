@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { MessagesService } from '../../../core/services/messages/messages.service';
+import { heroes } from '../models/heroes.types';
+import { heroe } from '../models/heroes.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +19,7 @@ export class HeroesServiceTsService {
     private messagesSerivice: MessagesService
   ) {}
 
-  getHeroes(): Observable<any[]> {
+  getHeroes(): Observable<heroes> {
     return this.httpClient
       .get<any[]>(this.apiUrl)
       .pipe(
@@ -27,9 +29,9 @@ export class HeroesServiceTsService {
       );
   }
 
-  getHeroe(id: number): Observable<any> {
+  getHeroe(id: number): Observable<heroe> {
     return this.httpClient
-      .get<any>(`${this.apiUrl}/${id}`)
+      .get<heroe>(`${this.apiUrl}/${id}`)
       .pipe(
         tap(() =>
           this.messagesSerivice.addMessage(`HeroService: fetched hero id=${id}`)
@@ -37,8 +39,8 @@ export class HeroesServiceTsService {
       );
   }
 
-  addHeroe(name: string): Observable<any> {
-    return this.httpClient.post<any>(this.apiUrl, { name }).pipe(
+  addHeroe(name: string): Observable<heroe> {
+    return this.httpClient.post<heroe>(this.apiUrl, { name }).pipe(
       tap((response) => {
         this.messagesSerivice.addMessage(
           `HeroService: added hero w/ id=${response.id}`
@@ -48,8 +50,8 @@ export class HeroesServiceTsService {
     );
   }
 
-  editHeroe(heroe: any): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/${heroe.id}`, heroe).pipe(
+  editHeroe(heroe: heroe): Observable<heroe> {
+    return this.httpClient.put<heroe>(`${this.apiUrl}/${heroe.id}`, heroe).pipe(
       tap(() => {
         this.messagesSerivice.addMessage(
           `HeroService: updated hero id=${heroe.id}`
@@ -59,7 +61,7 @@ export class HeroesServiceTsService {
   }
 
   removeHeroe(id: Number): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`).pipe(
       tap(() => {
         this.messagesSerivice.addMessage(`HeroService: deleted hero id=${id}`);
       })
